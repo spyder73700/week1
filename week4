@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .question {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .answers input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Memory Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                1. Remembering your phone number in sequences such as xxx-xxx-xxxx and your Social Security number in sequences such as xxx-xx-xxxx are examples of ______.
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q1" value="chunking"> Chunking</label><br>
+                <label><input type="radio" name="q1" value="short-term memory"> Short-term memory</label><br>
+                <label><input type="radio" name="q1" value="encoding"> Encoding</label><br>
+                <label><input type="radio" name="q1" value="sensory memory"> Sensory memory</label>
+            </div>
+
+            <div class="question">
+                2. The briefest form of memory is ______ memory.
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q2" value="long-term"> Long-term</label><br>
+                <label><input type="radio" name="q2" value="working"> Working</label><br>
+                <label><input type="radio" name="q2" value="short-term"> Short-term</label><br>
+                <label><input type="radio" name="q2" value="sensory"> Sensory</label>
+            </div>
+
+            <div class="question">
+                3. The suffix effect relates to which type of memory?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q3" value="iconic"> Iconic</label><br>
+                <label><input type="radio" name="q3" value="echoic"> Echoic</label><br>
+                <label><input type="radio" name="q3" value="short term"> Short term</label><br>
+                <label><input type="radio" name="q3" value="long term"> Long term</label>
+            </div>
+
+            <div class="question">
+                4. The fact that the size of the memory set does affect search time in short-term memory suggests that:
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q4" value="serial"> Search is a serial process</label><br>
+                <label><input type="radio" name="q4" value="self-terminating"> Search is both self-terminating and serial</label><br>
+                <label><input type="radio" name="q4" value="parallel"> Search is a parallel process</label><br>
+                <label><input type="radio" name="q4" value="exhaustive"> Search is exhaustive</label>
+            </div>
+
+            <div class="question">
+                5. Some experts describe memory as a ______, while others believe it is a ______.
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q5" value="structure-process"> Structure; process</label><br>
+                <label><input type="radio" name="q5" value="checklist-blueprint"> Checklist; blueprint</label><br>
+                <label><input type="radio" name="q5" value="secret-journey"> Secret; journey</label><br>
+                <label><input type="radio" name="q5" value="ball-string"> Ball of string; pool of water</label>
+            </div>
+
+            <div class="question">
+                6. Which of these is a component of the memory formation process?
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q6" value="retrieval"> Retrieval</label><br>
+                <label><input type="radio" name="q6" value="interference"> Interference</label><br>
+                <label><input type="radio" name="q6" value="modality"> Modality</label><br>
+                <label><input type="radio" name="q6" value="inspiration"> Inspiration</label>
+            </div>
+
+            <div class="question">
+                7. Unattended information is stored briefly in:
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q7" value="sensory"> Sensory memory</label><br>
+                <label><input type="radio" name="q7" value="short-term"> Short-term memory</label><br>
+                <label><input type="radio" name="q7" value="long-term"> Long-term memory</label><br>
+                <label><input type="radio" name="q7" value="secondary"> Secondary memory</label>
+            </div>
+
+            <div class="question">
+                8. In the absence of rehearsal, short-term memory tends to:
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q8" value="20-seconds"> Last about 20 seconds</label><br>
+                <label><input type="radio" name="q8" value="8-seconds"> Last about 8 seconds</label><br>
+                <label><input type="radio" name="q8" value="24-hours"> Decay slowly over 24 hours</label><br>
+                <label><input type="radio" name="q8" value="unlimited"> Last for an unlimited amount of time</label>
+            </div>
+
+            <div class="question">
+                9. The concept of fluid intelligence is highly related to:
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q9" value="working-memory"> Working memory capacity</label><br>
+                <label><input type="radio" name="q9" value="echoic"> Echoic memory capacity</label><br>
+                <label><input type="radio" name="q9" value="iconic"> Iconic memory capacity</label><br>
+                <label><input type="radio" name="q9" value="interference"> Interference</label>
+            </div>
+
+            <div class="question">
+                10. One basic physiological mechanism for learning is the ____ rule, which states that if a synapse between two neurons is repeatedly activated at about the same time the postsynaptic neuron fires, the chemistry of the synapse changes.
+            </div>
+            <div class="answers">
+                <label><input type="radio" name="q10" value="Hebb"> Hebb</label><br>
+                <label><input type="radio" name="q10" value="Baddeley"> Baddeley</label><br>
+                <label><input type="radio" name="q10" value="Tulving"> Tulving</label><br>
+                <label><input type="radio" name="q10" value="Carlson"> Carlson</label>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+<button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'chunking',
+            q2: 'sensory',
+            q3: 'echoic',
+            q4: 'serial',
+            q5: 'structure-process',
+            q6: 'retrieval',
+            q7: 'sensory',
+            q8: '20-seconds',
+            q9: 'working-memory',
+            q10: 'Hebb'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            const form = document.getElementById('quiz-form');
+            for (let i = 1; i <= 10; i++) {
+                const question = form.querySelector(`input[name="q${i}"]:checked`);
+                if (question && question.value === answers[`q${i}`]) {
+                    score++;
+                }
+            }
+            const result = document.getElementById('result');
+            result.innerHTML = `You scored ${score} out of 10!`;
+        }
+function goToNext() {
+    window.location.href = 'week5.html';  // Replace with your actual next file
+  }
+    </script>
+
+</body>
+</html>

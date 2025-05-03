@@ -122,6 +122,7 @@
       </div>
 
       <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+       <button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
     </form>
 
     <div class="result" id="result"></div>
@@ -151,6 +152,10 @@
       }
       document.getElementById('result').textContent = `You scored ${score} out of 10.`;
     }
+        function goToNext() {
+    window.location.href = 'week3.html';  // Replace with your actual next file
+  }
+
   </script>
 </body>
 </html>

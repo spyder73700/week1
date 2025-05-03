@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perception Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 700px;
+      margin: auto;
+    }
+    .question {
+      margin: 20px 0 10px;
+      font-weight: bold;
+    }
+    .answers label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Perception Quiz</h2>
+    <form id="quiz-form">
+
+      <div class="question">1. Which of the following processes the sensations coming into each sense organ, allowing us to understand and interpret the sensations we receive?</div>
+      <div class="answers">
+        <label><input type="radio" name="q1" value="environment">Environment</label>
+        <label><input type="radio" name="q1" value="stimulus">Stimulus</label>
+        <label><input type="radio" name="q1" value="brain">Brain</label>
+        <label><input type="radio" name="q1" value="sensory system">Sensory system</label>
+      </div>
+
+      <div class="question">2. Which of these psychological approaches focuses on how humans use principles of organization to understand our surroundings?</div>
+      <div class="answers">
+        <label><input type="radio" name="q2" value="top-down">Top-down</label>
+        <label><input type="radio" name="q2" value="gestalt">Gestalt</label>
+        <label><input type="radio" name="q2" value="perception-action">Perception-action</label>
+        <label><input type="radio" name="q2" value="computational">Computational</label>
+      </div>
+
+      <div class="question">3. The two best studied forms of perception are:</div>
+      <div class="answers">
+        <label><input type="radio" name="q3" value="visual and auditory">Visual and auditory</label>
+        <label><input type="radio" name="q3" value="auditory and olfactory">Auditory and olfactory</label>
+        <label><input type="radio" name="q3" value="visual and haptic">Visual and haptic</label>
+        <label><input type="radio" name="q3" value="visual and olfactory">Visual and olfactory</label>
+      </div>
+
+      <div class="question">4. Reversible figures illustrate the principle of:</div>
+      <div class="answers">
+        <label><input type="radio" name="q4" value="figure-ground organization">Figure-ground organization</label>
+        <label><input type="radio" name="q4" value="retinal imagery">Retinal imagery</label>
+        <label><input type="radio" name="q4" value="bottom-up processing">Bottom-up processing</label>
+        <label><input type="radio" name="q4" value="size constancy">Size constancy</label>
+      </div>
+
+      <div class="question">5. A stencil provides a good analogy for the theory of:</div>
+      <div class="answers">
+        <label><input type="radio" name="q5" value="good continuation">Good continuation</label>
+        <label><input type="radio" name="q5" value="top-down processing">Top-down processing</label>
+        <label><input type="radio" name="q5" value="featural analysis">Featural analysis</label>
+        <label><input type="radio" name="q5" value="template matching">Template matching</label>
+      </div>
+
+      <div class="question">6. Gibson’s theory of direct perception is in direct opposition to the ______ approach to perception.</div>
+      <div class="answers">
+        <label><input type="radio" name="q6" value="constructivist">Constructivist</label>
+        <label><input type="radio" name="q6" value="gestalt">Gestalt</label>
+        <label><input type="radio" name="q6" value="bottom-up">Bottom-up</label>
+        <label><input type="radio" name="q6" value="connectionist">Connectionist</label>
+      </div>
+
+      <div class="question">7. Prototype matching theory argues that percepts are compared to ______ in memory.</div>
+      <div class="answers">
+        <label><input type="radio" name="q7" value="idealized representations">Idealized representations</label>
+        <label><input type="radio" name="q7" value="gestalt principles">Gestalt principles</label>
+        <label><input type="radio" name="q7" value="lists of features">Lists of features</label>
+        <label><input type="radio" name="q7" value="abstract dot patterns">Abstract dot patterns</label>
+      </div>
+
+      <div class="question">8. ___________ are to visual perception what phonemes are to language, according to Biederman.</div>
+      <div class="answers">
+        <label><input type="radio" name="q8" value="receptors">Receptors</label>
+        <label><input type="radio" name="q8" value="distal stimuli">Distal stimuli</label>
+        <label><input type="radio" name="q8" value="templates">Templates</label>
+        <label><input type="radio" name="q8" value="geons">Geons</label>
+      </div>
+
+      <div class="question">9. Which of these help us estimate objects’ size and distance to aid in our perception?</div>
+      <div class="answers">
+        <label><input type="radio" name="q9" value="stimuli">Stimuli</label>
+        <label><input type="radio" name="q9" value="neurons">Neurons</label>
+        <label><input type="radio" name="q9" value="cues">Cues</label>
+        <label><input type="radio" name="q9" value="sensations">Sensations</label>
+      </div>
+
+      <div class="question">10. You are eating a meal at an open-air restaurant a few hundred yards from the ocean. You hear a constant whooshing sound. According to the likelihood principle, what would you assume caused the noise?</div>
+      <div class="answers">
+        <label><input type="radio" name="q10" value="waves crashing on the beach">Waves crashing on the beach</label>
+        <label><input type="radio" name="q10" value="series of airplanes landing">A series of airplanes landing</label>
+        <label><input type="radio" name="q10" value="earthquake">An earthquake</label>
+        <label><input type="radio" name="q10" value="traffic a few miles away">Traffic a few miles away</label>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: 'sensory system',
+      q2: 'gestalt',
+      q3: 'visual and auditory',
+      q4: 'figure-ground organization',
+      q5: 'template matching',
+      q6: 'constructivist',
+      q7: 'idealized representations',
+      q8: 'geons',
+      q9: 'cues',
+      q10: 'waves crashing on the beach'
+    };
+
+    function submitQuiz() {
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `You scored ${score} out of 10.`;
+    }
+  </script>
+</body>
+</html>

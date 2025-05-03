@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>30-Question Cognitive Psychology Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    #submit-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #results {
+      margin-top: 20px;
+    }
+    .correct-answer {
+      color: green;
+    }
+    .incorrect-answer {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Cognitive Psychology Quiz</h1>
+    <form id="quiz-form"></form>
+    <button id="submit-btn">Submit</button>
+      <button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
+  
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const questions = [
+      // Final imagery and mnemonic questions added
+      {
+        question: "Several mnemonic devices, including the method of loci, the pegword method, and the method of interacting images, have in common their reliance on:",
+        options: ["verbal rehearsal", "creating a story", "visual imagery", "connecting new information to well-known information"],
+        answer: "visual imagery"
+      },
+      {
+        question: "According to the dual-coding hypothesis, which of the following word pairs would be easiest to remember?",
+        options: ["fire-inspiration", "ferret-catalog", "freedom-honesty", "cat-liberty"],
+        answer: "ferret-catalog"
+      },
+      {
+        question: "In Paivio’s study of paired-associate learning, subjects learned four types of word pairs: I. concrete-concrete (for example, book-table) II. concrete-abstract (for example, book-freedom) III. abstract-concrete (for example, freedom-table) IV. abstract-abstract (for example, freedom-honesty) Which of the following accurately portrays participants’ recall of the four types of pairs, from highest recall to lowest?",
+        options: ["I, III, II, IV", "I, II, III, IV", "II, III, I, IV", "IV, III, II, I"],
+        answer: "I, II, III, IV"
+      },
+      {
+        question: "The relational-organizational hypothesis is supported by:",
+        options: [
+          "the effectiveness of the method of loci.",
+          "the fact that concrete words are recalled better than abstract words.",
+          "the fact that noninteractive images do not facilitate recall whereas interactive images do facilitate recall.",
+          "the effectiveness of the pegword method."
+        ],
+        answer: "the fact that noninteractive images do not facilitate recall whereas interactive images do facilitate recall."
+      },
+      {
+        question: "Some theorists believe that there is a single code for all types of information; this code is known as a _______ representation.",
+        options: ["visual", "pictorial", "verbal", "propositional"],
+        answer: "propositional"
+      },
+      {
+        question: "Behaviorists objected to the study of visual imagery because:",
+        options: [
+          "it cannot be investigated with sufficient scientific control.",
+          "there are too many individual differences in people’s abilities to visualize.",
+          "behaviorists prefer to study animals and animals have no imagery abilities.",
+          "we can only study visual imagery and not auditory images, olfactory images, etc."
+        ],
+        answer: "it cannot be investigated with sufficient scientific control."
+      },
+      {
+        question: "Kosslyn compared people’s verification times for statements like ‘Cats have claws’ (high association, small visual part of a cat) to ‘Cats have heads’ (low association, large visual part of a cat). He found that people were:",
+        options: [
+          "faster at verifying ‘claws’ whether or not they used visual imagery.",
+          "faster at verifying ‘heads’ whether or not they used visual imagery.",
+          "faster at verifying ‘heads’ when they used imagery, ‘claws’ when they did not.",
+          "faster at verifying ‘claws’ when they used imagery, ‘heads’ when they did not."
+        ],
+        answer: "faster at verifying ‘heads’ when they used imagery, ‘claws’ when they did not."
+      },
+      {
+        question: "Finke’s principle of _____ states that mental imagery allows us to retrieve information that was not intentionally stored.",
+        options: ["perceptual equivalence", "transformational equivalence", "implicit encoding", "structural encoding"],
+        answer: "implicit encoding"
+      },
+      {
+        question: "Your mental map of your campus is probably:",
+        options: [
+          "larger than reality.",
+          "smaller than reality.",
+          "more regular, with more straight lines and right angles, than reality.",
+          "less regular, with fewer straight lines and right angles, than reality."
+        ],
+        answer: "more regular, with more straight lines and right angles, than reality."
+      },
+      {
+        question: "Cooper’s studies of the mental rotation of complex polygons indicated that:",
+        options: [
+          "people rotated more complex polygons in the same amount of time as simpler polygons.",
+          "people took longer to rotate more complex polygons.",
+          "people actually took less time to rotate more complex polygons.",
+          "people were unable to mentally rotate a polygon with greater than 10 points with more than chance accuracy."
+        ],
+        answer: "people rotated more complex polygons in the same amount of time as simpler polygons."
+      }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function renderQuiz() {
+      shuffle(questions);
+      const form = document.getElementById('quiz-form');
+      questions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+
+        const questionTitle = document.createElement('h3');
+        questionTitle.textContent = `${index + 1}. ${q.question}`;
+        questionDiv.appendChild(questionTitle);
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+
+        q.options.forEach(opt => {
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `question${index}`;
+          input.value = opt;
+          label.appendChild(input);
+          label.append(` ${opt}`);
+          optionsDiv.appendChild(label);
+        });
+
+        questionDiv.appendChild(optionsDiv);
+        form.appendChild(questionDiv);
+      });
+    }
+
+    function gradeQuiz() {
+      const form = document.getElementById('quiz-form');
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+      let score = 0;
+
+      questions.forEach((q, index) => {
+        const selected = form[`question${index}`].value;
+        const resultP = document.createElement('p');
+        if (selected === q.answer) {
+          resultP.innerHTML = `<strong>Q${index + 1}:</strong> Correct`;
+          resultP.className = 'correct-answer';
+          score++;
+        } else {
+          resultP.innerHTML = `<strong>Q${index + 1}:</strong> Incorrect. Correct answer: ${q.answer}`;
+          resultP.className = 'incorrect-answer';
+        }
+        results.appendChild(resultP);
+      });
+
+      const scoreDisplay = document.createElement('h2');
+      scoreDisplay.textContent = `Your Score: ${score} / ${questions.length}`;
+      results.prepend(scoreDisplay);
+    }
+
+    document.getElementById('submit-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      gradeQuiz();
+    });
+
+    renderQuiz();
+      function goToNext() {
+    window.location.href = 'week9.html';  // Replace with your actual next file
+  }
+  </script>
+</body>
+</html>

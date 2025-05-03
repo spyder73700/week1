@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WEEK -10</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .quiz-container { max-width: 700px; margin: auto; }
+    .question { margin: 20px 0 10px; font-weight: bold; }
+    .answers label { display: block; margin-bottom: 5px; }
+    .submit-btn {
+      margin-top: 20px; padding: 10px 20px;
+      font-size: 16px; background-color: #28a745;
+      color: white; border: none; border-radius: 5px;
+      cursor: pointer;
+    }
+    .result { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>WEEK - 10 </h2>
+    <form id="quiz-form">
+
+      <div class="question">1. ______ is a very important technique for solving the Towers of Hanoi problem.</div>
+      <div class="answers">
+        <label><input type="radio" name="q1" value="Generate-and-test">Generate-and-test</label>
+        <label><input type="radio" name="q1" value="Working backward">Working backward</label>
+        <label><input type="radio" name="q1" value="Means-end analysis">Means-end analysis</label>
+        <label><input type="radio" name="q1" value="Reasoning by analogy">Reasoning by analogy</label>
+      </div>
+
+      <div class="question">2. A(n) _______ problem has a clear goal, a small set of starting information, and rules about how to attain the goal.</div>
+      <div class="answers">
+        <label><input type="radio" name="q2" value="classic">Classic</label>
+        <label><input type="radio" name="q2" value="well-defined">Well-defined</label>
+        <label><input type="radio" name="q2" value="laboratory">Laboratory</label>
+        <label><input type="radio" name="q2" value="introspective">Introspective</label>
+      </div>
+
+      <div class="question">3. The string problem often generates ______ when participants do not think to use the screwdriver as a pendulum.</div>
+      <div class="answers">
+        <label><input type="radio" name="q3" value="functional fixedness">Functional fixedness</label>
+        <label><input type="radio" name="q3" value="mental set">Mental set</label>
+        <label><input type="radio" name="q3" value="reasoning by analogy">Reasoning by analogy</label>
+        <label><input type="radio" name="q3" value="incomplete representations">Incomplete representations</label>
+      </div>
+
+      <div class="question">4. The General Problem Solver (GPS) is a computer program that solves problems in crypt arithmetic and logic using:</div>
+      <div class="answers">
+        <label><input type="radio" name="q4" value="generate-and-test">Generate-and-test</label>
+        <label><input type="radio" name="q4" value="reasoning by analogy">Reasoning by analogy</label>
+        <label><input type="radio" name="q4" value="introspection">Introspection</label>
+        <label><input type="radio" name="q4" value="means-end analysis">Means-end analysis</label>
+      </div>
+
+      <div class="question">5. ________ involves appropriate novelty in generating solutions.</div>
+      <div class="answers">
+        <label><input type="radio" name="q5" value="creativity">Creativity</label>
+        <label><input type="radio" name="q5" value="genius">Genius</label>
+        <label><input type="radio" name="q5" value="intelligence">Intelligence</label>
+        <label><input type="radio" name="q5" value="mental disorder">Mental disorder</label>
+      </div>
+
+      <div class="question">6. A tendency to adopt a certain framework, strategy, or procedure, which can become an obstacle to successful problem solving, is called:</div>
+      <div class="answers">
+        <label><input type="radio" name="q6" value="functional fixedness">Functional fixedness</label>
+        <label><input type="radio" name="q6" value="mental set">Mental set</label>
+        <label><input type="radio" name="q6" value="ill-defined thinking">Ill-defined thinking</label>
+        <label><input type="radio" name="q6" value="well-defined thinking">Well-defined thinking</label>
+      </div>
+
+      <div class="question">7. The detailed, concurrent, and nonjudgmental observation of the contents of your consciousness is called:</div>
+      <div class="answers">
+        <label><input type="radio" name="q7" value="introspection">Introspection</label>
+        <label><input type="radio" name="q7" value="thinking">Thinking</label>
+        <label><input type="radio" name="q7" value="daydreaming">Daydreaming</label>
+        <label><input type="radio" name="q7" value="problem solving">Problem solving</label>
+      </div>
+
+      <div class="question">8. The problem-solving technique of ______ involves comparing the goal with the starting point and choosing the best way to overcome the difference.</div>
+      <div class="answers">
+        <label><input type="radio" name="q8" value="reasoning by analogy">Reasoning by analogy</label>
+        <label><input type="radio" name="q8" value="mental set">Mental set</label>
+        <label><input type="radio" name="q8" value="generate-and-test">Generate-and-test</label>
+        <label><input type="radio" name="q8" value="means-end analysis">Means-end analysis</label>
+      </div>
+
+      <div class="question">9. The prefrontal cortex is involved in the ability to plan and solve problems.</div>
+      <div class="answers">
+        <label><input type="radio" name="q9" value="True">True</label>
+        <label><input type="radio" name="q9" value="False">False</label>
+      </div>
+
+      <div class="question">10. Research on the incubation effect has shown that:</div>
+      <div class="answers">
+        <label><input type="radio" name="q10" value="participants who take physical and mental breaks rarely show increased ability to solve problems.">Participants who take physical and mental breaks rarely show increased ability to solve problems.</label>
+        <label><input type="radio" name="q10" value="most empirical studies support the positive effects of incubation.">Most empirical studies support the positive effects of incubation.</label>
+        <label><input type="radio" name="q10" value="incubation effects are only found with very long incubation intervals.">Incubation effects are only found with very long incubation intervals.</label>
+        <label><input type="radio" name="q10" value="incubation actually has a negative effect on performance.">Incubation actually has a negative effect on performance.</label>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
+   
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: 'Working backward',
+      q2: 'well-defined',
+      q3: 'functional fixedness',
+      q4: 'means-end analysis',
+      q5: 'creativity',
+      q6: 'mental set',
+      q7: 'introspection',
+      q8: 'means-end analysis',
+      q9: 'True',
+      q10: 'participants who take physical and mental breaks rarely show increased ability to solve problems.'
+    };
+
+    function submitQuiz() {
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `You scored ${score} out of 10.`;
+    }
+       function goToNext() {
+    window.location.href = 'week11.html';  // Replace with your actual next file
+  }
+  </script>
+</body>
+</html>

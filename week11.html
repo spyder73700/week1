@@ -107,7 +107,8 @@
 
   <button onclick="submitQuiz()" class="submit-btn">Submit</button>
   <div id="result"></div>
-  <button id="nextBtn" onclick="goToNext()" class="submit-btn" style="display:none;">Next</button>
+  <button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
+
 
   <script>
     const correctAnswers = {
@@ -144,7 +145,7 @@
         }
       }
       document.getElementById("result").textContent = `You scored ${score} out of 10.`;
-      document.getElementById("nextBtn").style.display = "inline-block";
+     // document.getElementById("nextBtn").style.display = "inline-block";
     }
 
     function goToNext() {

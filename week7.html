@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>30-Question Cognitive Psychology Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    #submit-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #results {
+      margin-top: 20px;
+    }
+    .correct-answer {
+      color: green;
+    }
+    .incorrect-answer {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Cognitive Psychology Quiz</h1>
+    <form id="quiz-form"></form>
+    <button id="submit-btn">Submit</button>
+     <button type="button" class="submit-btn" onclick="goToNext()" >Next</button>
+ 
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const questions = [
+      // Previous questions already included
+      // Now adding the final concept questions below
+      {
+        question: "A ________ is a mental representation of some object, event, or pattern.",
+        options: ["category", "concept", "script", "memory"],
+        answer: "concept"
+      },
+      {
+        question: "‘Characteristic features’ and ‘family resemblance’ are important aspects of the _________ view of concepts.",
+        options: ["classical", "prototype", "exemplar", "schema"],
+        answer: "prototype"
+      },
+      {
+        question: "If ‘soda’ is a basic-level category, then ______ would be a subordinate level.",
+        options: ["soft drink", "beverage", "drink", "Coca-Cola"],
+        answer: "Coca-Cola"
+      },
+      {
+        question: "According to the ______ view of concepts, people categorize new instances by comparing them to representations of previously stored instances.",
+        options: ["classical", "prototype", "exemplar", "schema"],
+        answer: "exemplar"
+      },
+      {
+        question: "The _____ view of concepts argues that concepts include representations of at least some individual instances and not only abstract summaries.",
+        options: ["classical", "prototype", "schemata", "both exemplar and schemata"],
+        answer: "both exemplar and schemata"
+      },
+      {
+        question: "Which of the following is true regarding schemata?",
+        options: [
+          "A schema refers to something smaller and more specific than a concept.",
+          "Schemata are passive rather than active.",
+          "A schema contains only fixed parts, never variables.",
+          "Schemata can indicate relationships among various pieces of information."
+        ],
+        answer: "Schemata can indicate relationships among various pieces of information."
+      },
+      {
+        question: "The ______ view of concepts argues that a person uses his/her theories about the way the world works to justify the classification of instances in the same category.",
+        options: ["prototype", "exemplar", "schema", "knowledge-based"],
+        answer: "knowledge-based"
+      },
+      {
+        question: "The schema view of concept formation assumes that:",
+        options: [
+          "there are clear boundaries among individual schemata.",
+          "there is cognitive economy among concepts.",
+          "information is abstracted across instances.",
+          "no information is stored about actual instances."
+        ],
+        answer: "information is abstracted across instances."
+      },
+      {
+        question: "Which of the following is a good example of a basic level of categorization?",
+        options: ["musical instrument", "piano", "electronic keyboard", "grand piano"],
+        answer: "piano"
+      },
+      {
+        question: "If ‘sandwich’ is a basic-level category, then ______ would be a superordinate level.",
+        options: ["soup", "sub", "panini", "food"],
+        answer: "food"
+      }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function renderQuiz() {
+      shuffle(questions);
+      const form = document.getElementById('quiz-form');
+      questions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+
+        const questionTitle = document.createElement('h3');
+        questionTitle.textContent = `${index + 1}. ${q.question}`;
+        questionDiv.appendChild(questionTitle);
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+
+        q.options.forEach(opt => {
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `question${index}`;
+          input.value = opt;
+          label.appendChild(input);
+          label.append(` ${opt}`);
+          optionsDiv.appendChild(label);
+        });
+
+        questionDiv.appendChild(optionsDiv);
+        form.appendChild(questionDiv);
+      });
+    }
+
+    function gradeQuiz() {
+      const form = document.getElementById('quiz-form');
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+      let score = 0;
+
+      questions.forEach((q, index) => {
+        const selected = form[`question${index}`].value;
+        const resultP = document.createElement('p');
+        if (selected === q.answer) {
+          resultP.innerHTML = `<strong>Q${index + 1}:</strong> Correct`;
+          resultP.className = 'correct-answer';
+          score++;
+        } else {
+          resultP.innerHTML = `<strong>Q${index + 1}:</strong> Incorrect. Correct answer: ${q.answer}`;
+          resultP.className = 'incorrect-answer';
+        }
+        results.appendChild(resultP);
+      });
+
+      const scoreDisplay = document.createElement('h2');
+      scoreDisplay.textContent = `Your Score: ${score} / ${questions.length}`;
+      results.prepend(scoreDisplay);
+    }
+
+    document.getElementById('submit-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      gradeQuiz();
+    });
+
+    renderQuiz();
+      function goToNext() {
+    window.location.href = 'week8.html';  // Replace with your actual next file
+  }
+  </script>
+</body>
+</html>

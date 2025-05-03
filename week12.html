@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Decision Making Quiz</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    .question { font-size: 18px; margin-bottom: 10px; }
+    .option { display: block; margin-bottom: 8px; }
+    #nextBtn { margin-top: 20px; }
+    .result { margin-top: 30px; font-weight: bold; }
+    .correct-answer { color: green; }
+    .wrong-answer { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Week-12</h2>
+    <div id="quizBox">
+      <div id="question" class="question"></div>
+      <div id="options"></div>
+      <button id="nextBtn">Next</button>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "_____ is a normative model for integrating different dimensions and goals of a complex decision.",
+        options: ["Expected utility", "MAUT", "Framing", "Availability"],
+        answer: "MAUT"
+      },
+      {
+        question: "Expert decision makers may rely on intuition and mental simulation, according to the _________ model.",
+        options: ["recognition-primed decision-making", "MAUT", "EU", "elimination-by-aspects"],
+        answer: "recognition-primed decision-making"
+      },
+      {
+        question: "Expected utility is a descriptive model of human decision making.",
+        options: ["True", "False"],
+        answer: "False"
+      },
+      {
+        question: "When choosing one of 10 apartments, participants often:",
+        options: [
+          "spontaneously use multiattribute utility theory",
+          "use the same strategies regardless of options",
+          "systematically search all info",
+          "eliminate alternatives based on a few bad traits"
+        ],
+        answer: "eliminate alternatives based on a few bad traits"
+      },
+      {
+        question: "Expected utility theory is usually regarded as a ________ model.",
+        options: ["descriptive", "prescriptive", "normative", "both descriptive and prescriptive"],
+        answer: "normative"
+      },
+      {
+        question: "If a lottery win is $100,000 with 1/100 chance, a fair ticket price is:",
+        options: ["$5", "$10", "$100", "$1000"],
+        answer: "$1000"
+      },
+      {
+        question: "Normative models describe:",
+        options: ["ideal performance", "actual decision behavior", "cognitive illusions", "hindsight biases"],
+        answer: "ideal performance"
+      },
+      {
+        question: "If you estimate 60% confidence, you’re usually correct:",
+        options: ["55%", "60%", "70%", "100%"],
+        answer: "55%"
+      },
+      {
+        question: "The normative model for integrating dimensions of a decision is called MAUT.",
+        options: ["True", "False"],
+        answer: "True"
+      },
+      {
+        question: "Continuing to work on a math problem due to past effort is:",
+        options: ["sunk cost effect", "framing effect", "anchor effect", "availability bias"],
+        answer: "sunk cost effect"
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let shuffledQuestions = [];
+    let userAnswers = [];
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function loadQuestion() {
+      const current = shuffledQuestions[currentQuestionIndex];
+      document.getElementById("question").innerText = current.question;
+
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      current.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.classList.add("option");
+        btn.innerText = option;
+        btn.onclick = () => selectAnswer(option);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selected) {
+      const current = shuffledQuestions[currentQuestionIndex];
+      userAnswers.push({ question: current.question, selected, correct: current.answer });
+
+      if (selected === current.answer) score++;
+
+      currentQuestionIndex++;
+      if (currentQuestionIndex < shuffledQuestions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quizBox").style.display = "none";
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = `<h3>Your Score: ${score}/${shuffledQuestions.length}</h3><hr>`;
+      userAnswers.forEach(ans => {
+        const isCorrect = ans.selected === ans.correct;
+        resultBox.innerHTML += `
+          <p>
+            <strong>Q:</strong> ${ans.question}<br>
+            <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">
+              Your Answer: ${ans.selected}
+            </span><br>
+            ${!isCorrect ? `<span class="correct-answer">Correct Answer: ${ans.correct}</span>` : ""}
+          </p>
+        `;
+      });
+    }
+
+    document.getElementById("nextBtn").style.display = "none"; // hidden since click goes on answers
+    shuffledQuestions = shuffle([...quizData]);
+    loadQuestion();
+  </script>
+</body>
+</html>
